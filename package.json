@@ -8,6 +8,14 @@
   },
   "publisher": "GeLi",
   "categories": [
+    "AI",
+    "Chat",
+    "Formatters",
+    "Linters",
+    "Snippets",
+    "Testing",
+    "Visualization",
+    "Debuggers",
     "Other"
   ],
   "scripts": {
