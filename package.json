@@ -1,0 +1,75 @@
+{
+  "name": "my-vscode-extension",
+  "displayName": "AI Code Reviewer",
+  "description": "AI-powered code review assistant",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "code review",
+    "ai",
+    "openai",
+    "gpt",
+    "git"
+  ],
+  "license": "MIT",
+  "icon": "media/icon.png",
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "ai-code-review",
+          "title": "AI Code Review",
+          "icon": "media/sidebar-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "ai-code-review": [
+        {
+          "id": "aiReviewSettings",
+          "name": "Settings",
+          "type": "webview"
+        },
+        {
+          "id": "aiReviewActions",
+          "name": "Actions"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "my-extension.reviewCode",
+        "title": "Review Code Changes",
+        "icon": "$(inspect)"
+      },
+      {
+        "command": "my-extension.setOpenAIKey",
+        "title": "Set OpenAI API Key",
+        "icon": "$(key)"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "my-extension.reviewCode",
+        "key": "ctrl+shift+r",
+        "mac": "cmd+shift+r"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "my-extension.reviewCode",
+          "when": "view == aiReviewActions",
+          "group": "navigation"
+        }
+      ]
+    }
+  }
+}
