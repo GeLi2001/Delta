@@ -22,6 +22,12 @@ export class DiffProvider {
     const state = repository.state;
 
     for (const change of state.workingTreeChanges) {
+      // Check if the file is ignored
+      const isIgnored = await repository.checkIgnore([change.uri.fsPath]);
+      if (isIgnored) {
+        continue; // Skip ignored files
+      }
+
       // Get the diff for this specific file
       const uri = change.uri;
       const diff = await repository.diffWithHEAD(uri.fsPath);
@@ -36,7 +42,6 @@ export class DiffProvider {
 
     return changes;
   }
-
   private async parseDiff(diff: string, filePath: string): Promise<Change[]> {
     const changes: Change[] = [];
     const lines = diff.split("\n");
