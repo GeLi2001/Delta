@@ -1,16 +1,18 @@
-import OpenAI from "openai";
-import { Change, ReviewResult } from "./types";
+import { OpenAIWrapper } from "../language-models/openai";
+import { codeReviewTool } from "../tool-calls/codeReview";
+import { Change, ReviewResult } from "../types";
 
 export class AIReviewer {
-  private openai: OpenAI;
+  private openaiWrapper: OpenAIWrapper;
 
   constructor(apiKey: string) {
-    this.openai = new OpenAI({ apiKey });
+    this.openaiWrapper = new OpenAIWrapper(apiKey);
   }
-
   async reviewChanges(changes: Change[]): Promise<ReviewResult> {
     const prompt = this.generatePrompt(changes);
-    const response = await this.callAI(prompt);
+    const response = await this.openaiWrapper.functionCall(prompt, [
+      codeReviewTool,
+    ]);
     return this.parseResponse(response);
   }
 
@@ -45,16 +47,6 @@ Format your response in JSON with the following structure:
     "complexity": "complexity assessment",
     "impact": "potential impact"
 }`;
-  }
-
-  private async callAI(prompt: string): Promise<string> {
-    const completion = await this.openai.chat.completions.create({
-      messages: [{ role: "user", content: prompt }],
-      model: "gpt-4",
-      temperature: 0.3,
-    });
-
-    return completion.choices[0].message.content || "";
   }
 
   private parseResponse(response: string): ReviewResult {

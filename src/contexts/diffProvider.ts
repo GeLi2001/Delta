@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import { Change, Hunk } from "./types";
+import { Change, Hunk } from "../types";
 
 export class DiffProvider {
   async getCurrentChanges(): Promise<Change[]> {

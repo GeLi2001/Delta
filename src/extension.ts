@@ -1,9 +1,9 @@
 import * as vscode from "vscode";
-import { AIReviewer } from "./aiReviewer";
+import { AIReviewer } from "./agents/aiReviewer";
 import { OPENAI_KEY_SECRET } from "./constants";
-import { DiffProvider } from "./diffProvider";
-import { AISidebarProvider } from "./sidebarProvider";
+import { DiffProvider } from "./contexts/diffProvider";
 import { ReviewResult, SecurityIssue, Suggestion } from "./types";
+import { AISidebarProvider } from "./ui/sidebarProvider";
 
 export function activate(context: vscode.ExtensionContext) {
   const diffProvider = new DiffProvider();
