@@ -9,6 +9,10 @@
   "categories": [
     "Other"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GeLi2001/Delta"
+  },
   "keywords": [
     "code review",
     "ai",
