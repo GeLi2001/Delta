@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import { AIReviewer } from "../ai/ai-reviewer/agent";
+import { AIReviewer } from "../ai-reviewer/agent";
 import { DiffProvider } from "../contexts/diffProvider";
 import { generateReviewHTML } from "../ui/review";
 import { AISidebarProvider } from "../ui/sidebarProvider";
@@ -82,8 +82,30 @@ function reviewCodeCommand(
       const panel = vscode.window.createWebviewPanel(
         "codeReview",
         "AI Code Review",
-        vscode.ViewColumn.Two,
-        {}
+        {
+          viewColumn: vscode.ViewColumn.Beside, // Put review panel beside
+          preserveFocus: true, // Keep focus on main editor
+        },
+        {
+          enableCommandUris: true,
+          enableScripts: true,
+          retainContextWhenHidden: true,
+        }
+      );
+
+      // In your webview panel creation code
+      panel.webview.onDidReceiveMessage(
+        async (message) => {
+          if (message.command === "openFile") {
+            console.log("openFile", message);
+            await vscode.commands.executeCommand("delta.openFile", {
+              path: message.path,
+              lineNumber: message.lineNumber,
+            });
+          }
+        },
+        undefined,
+        context.subscriptions
       );
 
       panel.webview.html = generateReviewHTML(review);

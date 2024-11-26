@@ -1,5 +1,5 @@
-import { Change, ReviewResult } from "../../types";
 import { OpenAIWrapper } from "../language-models/openai";
+import { Change, ReviewResult } from "../types";
 import { codeReviewPrompt } from "./prompts";
 import { codeReviewTool } from "./tool-calls";
 

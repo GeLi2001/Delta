@@ -27,7 +27,11 @@ export function generateReviewHTML(review: ReviewResult): string {
                       .map(
                         (s: Suggestion) => `
                         <div class="issue">
-                            <strong>${s.file}:${s.line}</strong>
+                            <strong>
+                            <a href="#" onclick="openFile('${s.file}', ${s.line}); return false;">
+                                    ${s.file}:${s.line}
+                                </a>
+                            </strong>                            
                             <p>${s.description}</p>
                             <p><strong>Recommendation:</strong> ${s.recommendation}</p>
                             <p><strong>Impact:</strong> ${s.impact}</p>
@@ -73,6 +77,17 @@ export function generateReviewHTML(review: ReviewResult): string {
                     <h2>Potential Impact</h2>
                     <p>${review.impact}</p>
                 </div>
+                <script>
+                    const vscode = acquireVsCodeApi();
+                    function openFile(path, line) {
+                        console.log("openFile", path, line);
+                        vscode.postMessage({
+                            command: 'openFile',
+                            path: path,
+                            lineNumber: line
+                        });
+                    }
+                </script>
             </body>
         </html>`;
 }
