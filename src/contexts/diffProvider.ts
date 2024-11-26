@@ -4,6 +4,12 @@ import { Change } from "../types";
 export class DiffProvider {
   private git: SimpleGit | null = null;
 
+  static async create(context: vscode.ExtensionContext): Promise<DiffProvider> {
+    const diffProvider = new DiffProvider();
+    await diffProvider.initialize();
+    return diffProvider;
+  }
+
   async initialize(): Promise<void> {
     // Get the workspace folder path
     const workspaceFolders = vscode.workspace.workspaceFolders;

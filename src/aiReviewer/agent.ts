@@ -9,6 +9,7 @@ export class AIReviewer {
   constructor(apiKey: string) {
     this.openaiWrapper = new OpenAIWrapper(apiKey);
   }
+
   async reviewChanges(changes: Change[]): Promise<ReviewResult> {
     const prompt = this.generatePrompt(changes);
     const response = await this.openaiWrapper.functionCall(prompt, [

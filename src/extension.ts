@@ -7,8 +7,7 @@ export async function activate(context: vscode.ExtensionContext) {
   if (gitExtension && !gitExtension.isActive) {
     await gitExtension.activate();
   }
-  const diffProvider = new DiffProvider();
-  await diffProvider.initialize();
+  const diffProvider = await DiffProvider.create(context);
   const aiReviewer = initializeAIReviewer(context);
 
   setup(context, aiReviewer, diffProvider);
