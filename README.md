@@ -40,7 +40,7 @@ Please report issues on our [GitHub repository](https://github.com/yourusername/
 
 ## Release Notes
 
-### 0.0.1
+### 0.0.3
 
 Initial release of AI Code Reviewer:
 
