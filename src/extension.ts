@@ -1,5 +1,4 @@
 import * as vscode from "vscode";
-import { registerCommands } from "./commands";
 import { DiffProvider } from "./contexts/diffProvider";
 import { initializeAIReviewer, setup } from "./utils/setup";
 
@@ -13,7 +12,6 @@ export async function activate(context: vscode.ExtensionContext) {
   const aiReviewer = initializeAIReviewer(context);
 
   setup(context, aiReviewer, diffProvider);
-  registerCommands(context);
 }
 
 export function deactivate() {}
