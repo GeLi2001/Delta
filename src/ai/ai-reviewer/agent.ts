@@ -1,6 +1,7 @@
+import { Change, ReviewResult } from "../../types";
 import { OpenAIWrapper } from "../language-models/openai";
-import { codeReviewTool } from "../tool-calls/codeReview";
-import { Change, ReviewResult } from "../types";
+import { codeReviewPrompt } from "./prompts";
+import { codeReviewTool } from "./tool-calls";
 
 export class AIReviewer {
   private openaiWrapper: OpenAIWrapper;
@@ -30,23 +31,7 @@ Content: ${change.content}
   )
   .join("\n")}
 
-Please analyze for:
-1. Summary of changes
-2. Potential bugs or issues
-3. Security concerns
-4. Best practices
-5. Code complexity
-6. Potential impact
-
-Format your response in JSON with the following structure:
-{
-    "summary": "Brief overview of changes",
-    "suggestions": [{"file": "path", "line": number, "description": "issue", "recommendation": "fix", "impact": "effect"}],
-    "securityIssues": [{"severity": "low|medium|high", "description": "issue", "location": "where", "recommendation": "fix"}],
-    "bestPractices": ["practice1", "practice2"],
-    "complexity": "complexity assessment",
-    "impact": "potential impact"
-}`;
+${codeReviewPrompt}`;
   }
 
   private parseResponse(response: string): ReviewResult {

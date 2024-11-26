@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import { AIReviewer } from "../agents/aiReviewer";
+import { AIReviewer } from "../ai/ai-reviewer/agent";
 import { DiffProvider } from "../contexts/diffProvider";
 import { generateReviewHTML } from "../ui/review";
 import { AISidebarProvider } from "../ui/sidebarProvider";
