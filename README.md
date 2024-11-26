@@ -40,12 +40,13 @@ Please report issues on our [GitHub repository](https://github.com/GeLi2001/Delt
 
 ## Release Notes
 
-### 0.0.3
+### 0.0.6
 
 Initial release of AI Code Reviewer:
 
 - Basic code review functionality
 - Security analysis
+- function calling
 - Best practices suggestions
 - Sidebar interface
 - API key management
