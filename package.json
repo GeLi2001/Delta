@@ -2,7 +2,7 @@
   "name": "delta",
   "displayName": "Delta",
   "description": "AI-powered code review assistant",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "engines": {
     "vscode": "^1.94.2"
   },
@@ -91,8 +91,8 @@
     }
   },
   "devDependencies": {
-    "@types/vscode": "^1.94.2",
     "@types/node": "^16.x",
+    "@types/vscode": "^1.94.2",
     "@types/webpack": "^5.28.5",
     "ts-loader": "^9.5.1",
     "typescript": "^5.7.2",
@@ -100,6 +100,7 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
-    "openai": "^4.73.1"
+    "openai": "^4.73.1",
+    "punycode": "^2.3.1"
   }
 }

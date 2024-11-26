@@ -1,10 +1,9 @@
 import * as vscode from "vscode";
 import { AIReviewer } from "./aiReviewer";
+import { OPENAI_KEY_SECRET } from "./constants";
 import { DiffProvider } from "./diffProvider";
 import { AISidebarProvider } from "./sidebarProvider";
 import { ReviewResult, SecurityIssue, Suggestion } from "./types";
-
-const OPENAI_KEY_SECRET = "openai-api-key";
 
 export function activate(context: vscode.ExtensionContext) {
   const diffProvider = new DiffProvider();

@@ -1,6 +1,17 @@
 # Delta
 
-An AI-powered code review assistant for Visual Studio Code that provides intelligent feedback on your code changes.
+An Open-source AI-powered code review assistant for Visual Studio Code that provides intelligent feedback on your code changes.
+
+## Usage
+
+1. Make changes to your code
+2. Use the keyboard shortcut `Ctrl+Shift+R` (Windows/Linux) or `Cmd+Shift+R` (Mac)
+3. Or click the "Review Code Changes" button in the sidebar
+4. View the AI-generated code review in a new panel
+
+## Extension Settings
+
+- `openai-api-key`: Your OpenAI API key (stored securely in your local computer)
 
 ## Features
 
@@ -22,17 +33,6 @@ An AI-powered code review assistant for Visual Studio Code that provides intelli
 1. Install the extension from the VS Code marketplace
 2. Click on the AI Code Review icon in the sidebar
 3. Enter your OpenAI API key in the settings panel
-
-## Usage
-
-1. Make changes to your code
-2. Use the keyboard shortcut `Ctrl+Shift+R` (Windows/Linux) or `Cmd+Shift+R` (Mac)
-3. Or click the "Review Code Changes" button in the sidebar
-4. View the AI-generated code review in a new panel
-
-## Extension Settings
-
-- `openai-api-key`: Your OpenAI API key (stored securely)
 
 ## Known Issues
 
