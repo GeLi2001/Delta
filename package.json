@@ -1,8 +1,8 @@
 {
-  "name": "my-vscode-extension",
-  "displayName": "AI Code Reviewer",
+  "name": "delta",
+  "displayName": "Delta",
   "description": "AI-powered code review assistant",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "engines": {
     "vscode": "^1.80.0"
   },
