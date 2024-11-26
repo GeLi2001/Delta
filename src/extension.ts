@@ -87,12 +87,8 @@ export function activate(context: vscode.ExtensionContext) {
   const sidebarProvider = new AISidebarProvider(context.extensionUri, context);
 
   context.subscriptions.push(
-    vscode.window.registerWebviewViewProvider(
-      "aiReviewSettings",
-      sidebarProvider
-    )
+    vscode.window.registerWebviewViewProvider("deltaSettings", sidebarProvider)
   );
-  // Try to initialize AIReviewer with stored key
   context.secrets.get(OPENAI_KEY_SECRET).then((key) => {
     if (key) {
       aiReviewer = new AIReviewer(key);

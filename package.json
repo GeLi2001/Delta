@@ -2,9 +2,9 @@
   "name": "delta",
   "displayName": "Delta",
   "description": "AI-powered code review assistant",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
-    "vscode": "^1.95.0"
+    "vscode": "^1.94.2"
   },
   "publisher": "GeLi",
   "categories": [
@@ -34,7 +34,9 @@
   ],
   "license": "MIT",
   "icon": "media/icon.png",
-  "activationEvents": [],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
   "main": "./dist/extension.js",
   "contributes": {
     "viewsContainers": {
@@ -89,7 +91,7 @@
     }
   },
   "devDependencies": {
-    "@types/vscode": "^1.95.0",
+    "@types/vscode": "^1.94.2",
     "@types/node": "^16.x",
     "@types/webpack": "^5.28.5",
     "ts-loader": "^9.5.1",

@@ -43,16 +43,16 @@ export class AISidebarProvider implements vscode.WebviewViewProvider {
       <html>
         <head>
           <style>
-            body { padding: 15px; }
-            button { width: 100%; margin: 5px 0; padding: 8px; }
-            input { width: 100%; margin: 5px 0; padding: 8px; }
+            body { font-family: Arial, sans-serif; padding: 10px; }
+            h3 { margin-right: 5px; } /* Added right margin for h3 */
+            button, input { width: 100%; margin: 5px 0; padding: 5px; }
           </style>
         </head>
         <body>
           <h3>OpenAI API Key</h3>
           <input type="password" id="apiKey" placeholder="Enter API Key">
-          <button onclick="saveKey()">Save Key</button>
-          <button onclick="deleteKey()">Remove Key</button>
+          <button onclick="saveKey()">Save</button>
+          <button onclick="deleteKey()">Remove</button>
           
           <script>
             const vscode = acquireVsCodeApi();
