@@ -36,7 +36,7 @@ An AI-powered code review assistant for Visual Studio Code that provides intelli
 
 ## Known Issues
 
-Please report issues on our [GitHub repository](https://github.com/yourusername/your-repo/issues).
+Please report issues on our [GitHub repository](https://github.com/GeLi2001/Delta/issues).
 
 ## Release Notes
 
