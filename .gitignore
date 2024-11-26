@@ -5,3 +5,5 @@ out/
 .vscode-test/
 coverage/
 .env
+.vscode
+dist/
