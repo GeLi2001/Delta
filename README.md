@@ -40,7 +40,7 @@ Please report issues on our [GitHub repository](https://github.com/GeLi2001/Delt
 
 ## Release Notes
 
-### 0.0.6
+### 0.0.7
 
 Initial release of AI Code Reviewer:
 
