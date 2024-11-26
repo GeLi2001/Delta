@@ -7,10 +7,10 @@ export function generateReviewHTML(review: ReviewResult): string {
                 <style>
                     body { font-family: Arial, sans-serif; padding: 20px; }
                     .section { margin-bottom: 20px; }
-                    .issue { margin: 10px 0; padding: 10px; background: #f0f0f0; }
-                    .security-high { border-left: 4px solid #ff0000; }
-                    .security-medium { border-left: 4px solid #ffa500; }
-                    .security-low { border-left: 4px solid #ffff00; }
+                    .issue { margin: 10px 0; padding: 10px; background: #f8f9fa; }
+                    .security-high { border-left: 4px solid #dc3545; }
+                    .security-medium { border-left: 4px solid #fd7e14; }
+                    .security-low { border-left: 4px solid #ffc107; }
                 </style>
             </head>
             <body>
