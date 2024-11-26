@@ -1,4 +1,4 @@
-# AI Code Reviewer
+# Delta
 
 An AI-powered code review assistant for Visual Studio Code that provides intelligent feedback on your code changes.
 
