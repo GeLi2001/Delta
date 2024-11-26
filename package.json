@@ -4,11 +4,23 @@
   "description": "AI-powered code review assistant",
   "version": "0.0.1",
   "engines": {
-    "vscode": "^1.80.0"
+    "vscode": "^1.95.0"
   },
+  "publisher": "GeLi",
   "categories": [
     "Other"
   ],
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/GeLi2001/Delta"
@@ -23,45 +35,45 @@
   "license": "MIT",
   "icon": "media/icon.png",
   "activationEvents": [],
-  "main": "./out/extension.js",
+  "main": "./dist/extension.js",
   "contributes": {
     "viewsContainers": {
       "activitybar": [
         {
-          "id": "ai-code-review",
-          "title": "AI Code Review",
+          "id": "delta",
+          "title": "Delta",
           "icon": "media/sidebar-icon.svg"
         }
       ]
     },
     "views": {
-      "ai-code-review": [
+      "delta": [
         {
-          "id": "aiReviewSettings",
+          "id": "deltaSettings",
           "name": "Settings",
           "type": "webview"
         },
         {
-          "id": "aiReviewActions",
+          "id": "deltaActions",
           "name": "Actions"
         }
       ]
     },
     "commands": [
       {
-        "command": "my-extension.reviewCode",
+        "command": "delta.reviewCode",
         "title": "Review Code Changes",
         "icon": "$(inspect)"
       },
       {
-        "command": "my-extension.setOpenAIKey",
+        "command": "delta.setOpenAIKey",
         "title": "Set OpenAI API Key",
         "icon": "$(key)"
       }
     ],
     "keybindings": [
       {
-        "command": "my-extension.reviewCode",
+        "command": "delta.reviewCode",
         "key": "ctrl+shift+r",
         "mac": "cmd+shift+r"
       }
@@ -69,11 +81,23 @@
     "menus": {
       "view/title": [
         {
-          "command": "my-extension.reviewCode",
+          "command": "delta.reviewCode",
           "when": "view == aiReviewActions",
           "group": "navigation"
         }
       ]
     }
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.95.0",
+    "@types/node": "^16.x",
+    "@types/webpack": "^5.28.5",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.7.2",
+    "webpack": "^5.96.1",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "openai": "^4.73.1"
   }
 }

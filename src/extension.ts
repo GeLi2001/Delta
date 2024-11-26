@@ -3,9 +3,6 @@ import { AIReviewer } from "./aiReviewer";
 import { DiffProvider } from "./diffProvider";
 import { AISidebarProvider } from "./sidebarProvider";
 import { ReviewResult, SecurityIssue, Suggestion } from "./types";
-// Add to imports
-
-// Add inside activate function
 
 const OPENAI_KEY_SECRET = "openai-api-key";
 
@@ -15,7 +12,7 @@ export function activate(context: vscode.ExtensionContext) {
 
   // Command to set OpenAI API key
   let setKeyCommand = vscode.commands.registerCommand(
-    "my-extension.setOpenAIKey",
+    "delta.setOpenAIKey",
     async () => {
       const key = await vscode.window.showInputBox({
         prompt: "Enter your OpenAI API key",
@@ -33,7 +30,7 @@ export function activate(context: vscode.ExtensionContext) {
 
   // Command to review code
   let reviewCommand = vscode.commands.registerCommand(
-    "my-extension.reviewCode",
+    "delta.reviewCode",
     async () => {
       try {
         // Check if we have the API key
@@ -46,7 +43,7 @@ export function activate(context: vscode.ExtensionContext) {
           );
 
           if (response === setKey) {
-            await vscode.commands.executeCommand("my-extension.setOpenAIKey");
+            await vscode.commands.executeCommand("delta.setOpenAIKey");
           }
           return;
         }
