@@ -4,13 +4,25 @@ export function generateReviewHTML(review: ReviewResult): string {
   return `<!DOCTYPE html>
         <html>
             <head>
-                <style>
-                    body { font-family: Arial, sans-serif; padding: 20px; }
+                                <style>
+                    body { 
+                        font-family: Arial, sans-serif; 
+                        padding: 20px; 
+                        background-color: #1e1e1e;
+                        color: #d4d4d4;
+                    }
                     .section { margin-bottom: 20px; }
-                    .issue { margin: 10px 0; padding: 10px; background: #f8f9fa; }
-                    .security-high { border-left: 4px solid #dc3545; }
-                    .security-medium { border-left: 4px solid #fd7e14; }
-                    .security-low { border-left: 4px solid #ffc107; }
+                    .issue { 
+                        margin: 10px 0; 
+                        padding: 10px; 
+                        background: #2d2d2d;
+                        border-radius: 4px;
+                    }
+                    .security-high { border-left: 4px solid #f14c4c; }
+                    .security-medium { border-left: 4px solid #ffa657; }
+                    .security-low { border-left: 4px solid #cca700; }
+                    a { color: #4ec9b0; text-decoration: none; }
+                    a:hover { text-decoration: underline; }
                 </style>
             </head>
             <body>
@@ -28,7 +40,7 @@ export function generateReviewHTML(review: ReviewResult): string {
                         (s: Suggestion) => `
                         <div class="issue">
                             <strong>
-                            <a href="#" onclick="openFile('${s.file}', ${s.line}); return false;">
+                            <a href="javascript:void(0)" onclick="openFile('${s.file}', ${s.line}); return false;">
                                     ${s.file}:${s.line}
                                 </a>
                             </strong>                            

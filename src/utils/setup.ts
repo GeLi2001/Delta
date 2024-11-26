@@ -15,7 +15,7 @@ export function setup(
   context.subscriptions.push(
     vscode.window.registerWebviewViewProvider("deltaSettings", sidebarProvider)
   );
-  vscode.window.showInformationMessage("/Delta loaded/");
+  vscode.window.showInformationMessage("Delta loaded");
 }
 
 export function initializeAIReviewer(

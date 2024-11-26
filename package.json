@@ -2,7 +2,7 @@
   "name": "delta",
   "displayName": "Delta",
   "description": "AI-powered code review assistant",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "engines": {
     "vscode": "^1.94.2"
   },
