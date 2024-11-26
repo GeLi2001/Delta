@@ -17,7 +17,7 @@ export class OpenAIWrapper {
     return completion.choices[0].message.content || "";
   }
 
-  async functionCall(prompt: string, tools: any[]): Promise<any> {
+  async functionCall(prompt: string, tools: any[]): Promise<string> {
     const completion = await this.openai.chat.completions.create({
       messages: [{ role: "user", content: prompt }],
       model: "gpt-4",
@@ -25,8 +25,10 @@ export class OpenAIWrapper {
       tools: tools,
       tool_choice: "required",
     });
-
-    const toolCall = completion.choices[0].message.tool_calls![0];
+    console.log(prompt);
+    const toolCall =
+      completion.choices[0].message.tool_calls![0].function.arguments;
+    console.log(toolCall);
     return toolCall;
   }
 }

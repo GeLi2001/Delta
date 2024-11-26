@@ -91,6 +91,7 @@
     }
   },
   "devDependencies": {
+    "@types/diff2html": "^0.0.5",
     "@types/node": "^16.x",
     "@types/vscode": "^1.94.2",
     "@types/webpack": "^5.28.5",
@@ -100,7 +101,9 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
+    "diff2html": "^3.4.48",
     "openai": "^4.73.1",
-    "punycode": "^2.3.1"
+    "punycode": "^2.3.1",
+    "simple-git": "^3.27.0"
   }
 }

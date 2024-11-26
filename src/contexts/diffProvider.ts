@@ -1,87 +1,114 @@
+import simpleGit, { SimpleGit } from "simple-git";
 import * as vscode from "vscode";
-import { Change, Hunk } from "../types";
-
+import { Change } from "../types";
 export class DiffProvider {
-  async getCurrentChanges(): Promise<Change[]> {
-    const gitExtension = vscode.extensions.getExtension("vscode.git");
-    if (!gitExtension) {
-      throw new Error("Git extension not found");
+  private git: SimpleGit | null = null;
+
+  async initialize(): Promise<void> {
+    // Get the workspace folder path
+    const workspaceFolders = vscode.workspace.workspaceFolders;
+    if (!workspaceFolders || workspaceFolders.length === 0) {
+      throw new Error("No workspace folder found");
     }
 
-    if (!gitExtension.isActive) {
-      await gitExtension.activate();
-    }
+    const workspacePath = workspaceFolders[0].uri.fsPath;
 
-    const git = gitExtension.exports.getAPI(1);
-    const repository = git.repositories[0];
+    try {
+      this.git = simpleGit(workspacePath);
 
-    if (!repository) {
-      throw new Error("No git repository found");
-    }
-
-    // Get all changes in the repository
-    const changes: Change[] = [];
-
-    // Get modified files
-    const state = repository.state;
-
-    for (const change of state.workingTreeChanges) {
-      // Check if the file is ignored
-      const isIgnored = await repository.checkIgnore([change.uri.fsPath]);
-      if (isIgnored) {
-        continue; // Skip ignored files
+      // Verify it's a git repository
+      const isRepo = await this.git.checkIsRepo();
+      if (!isRepo) {
+        throw new Error(`${workspacePath} is not a git repository`);
       }
-
-      // Get the diff for this specific file
-      const uri = change.uri;
-      const diff = await repository.diffWithHEAD(uri.fsPath);
-
-      if (diff) {
-        // Convert the diff to string if it's a Buffer
-        const diffText = diff.toString();
-        const fileChanges = await this.parseDiff(diffText, uri.fsPath);
-        changes.push(...fileChanges);
-      }
+    } catch (error) {
+      this.git = null;
+      throw new Error(`Failed to initialize git: ${error}`);
     }
-
-    return changes;
   }
-  private async parseDiff(diff: string, filePath: string): Promise<Change[]> {
-    const changes: Change[] = [];
-    const lines = diff.split("\n");
-    let currentHunk: Hunk | null = null;
 
-    for (const line of lines) {
-      if (line.startsWith("@@ ")) {
-        currentHunk = this.parseHunkHeader(line);
-      } else if (line.startsWith("+") || line.startsWith("-")) {
-        if (currentHunk) {
-          changes.push({
-            type: line.startsWith("+") ? "add" : "delete",
-            file: filePath,
-            content: line.substring(1),
-            lineNumber: line.startsWith("+")
-              ? currentHunk.newStart
-              : currentHunk.oldStart,
-          });
+  async getCurrentChanges(): Promise<Change[]> {
+    if (!this.git) {
+      try {
+        await this.initialize();
+      } catch (error) {
+        console.error("Failed to initialize git:", error);
+        return [];
+      }
+    }
+
+    try {
+      const status = await this.git!.status();
+      const changes: Change[] = [];
+
+      const modifiedFiles = [
+        ...status.modified,
+        ...status.created,
+        ...status.deleted,
+      ];
+
+      for (const file of modifiedFiles) {
+        try {
+          const diff = await this.git!.diff(["HEAD", file]);
+          const fileChanges = this.parseDiff(diff, file);
+          changes.push(...fileChanges);
+        } catch (error) {
+          console.error(`Error processing ${file}:`, error);
         }
       }
+
+      return changes;
+    } catch (error) {
+      console.error("Error getting changes:", error);
+      return [];
+    }
+  }
+
+  private parseDiff(diff: string, filePath: string): Change[] {
+    const changes: Change[] = [];
+    const lines = diff.split("\n");
+    let currentLineNumber = 0;
+
+    for (const line of lines) {
+      // Skip diff headers
+      if (
+        line.startsWith("diff") ||
+        line.startsWith("index") ||
+        line.startsWith("+++") ||
+        line.startsWith("---")
+      ) {
+        continue;
+      }
+
+      // Handle hunk headers
+      if (line.startsWith("@@")) {
+        const match = line.match(/@@ -\d+(?:,\d+)? \+(\d+)/);
+        if (match) {
+          currentLineNumber = parseInt(match[1], 10) - 1;
+        }
+        continue;
+      }
+
+      // Handle actual changes
+      if (line.startsWith("+")) {
+        changes.push({
+          type: "add",
+          file: filePath,
+          content: line.substring(1),
+          lineNumber: ++currentLineNumber,
+        });
+      } else if (line.startsWith("-")) {
+        changes.push({
+          type: "delete",
+          file: filePath,
+          content: line.substring(1),
+          lineNumber: currentLineNumber,
+        });
+      } else if (line.startsWith(" ")) {
+        currentLineNumber++;
+      }
     }
 
     return changes;
-  }
-
-  private parseHunkHeader(header: string): Hunk {
-    const match = header.match(/@@ -(\d+),?(\d+)? \+(\d+),?(\d+)? @@/);
-    if (!match) {
-      throw new Error("Invalid hunk header");
-    }
-
-    return {
-      oldStart: parseInt(match[1]),
-      oldLength: match[2] ? parseInt(match[2]) : 1,
-      newStart: parseInt(match[3]),
-      newLength: match[4] ? parseInt(match[4]) : 1,
-    };
   }
 }

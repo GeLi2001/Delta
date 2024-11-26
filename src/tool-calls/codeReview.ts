@@ -6,12 +6,47 @@ export const codeReviewTool = {
     parameters: {
       type: "object",
       properties: {
-        file: { type: "string" },
-        lineNumber: { type: "number" },
-        type: { type: "string" },
-        content: { type: "string" },
+        summary: { type: "string", description: "Brief overview of changes" },
+        suggestions: {
+          type: "array",
+          items: {
+            type: "object",
+            properties: {
+              file: { type: "string" },
+              line: { type: "number" },
+              description: { type: "string" },
+              recommendation: { type: "string" },
+              impact: { type: "string" },
+            },
+          },
+        },
+        securityIssues: {
+          type: "array",
+          items: {
+            type: "object",
+            properties: {
+              severity: { type: "string", enum: ["low", "medium", "high"] },
+              description: { type: "string" },
+              location: { type: "string" },
+              recommendation: { type: "string" },
+            },
+          },
+        },
+        bestPractices: {
+          type: "array",
+          items: { type: "string" },
+        },
+        complexity: { type: "string" },
+        impact: { type: "string" },
       },
-      required: ["file", "lineNumber", "type", "content"],
+      required: [
+        "summary",
+        "suggestions",
+        "securityIssues",
+        "bestPractices",
+        "complexity",
+        "impact",
+      ],
     },
   },
 };
