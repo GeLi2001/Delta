@@ -8,6 +8,10 @@ export class DiffProvider {
       throw new Error("Git extension not found");
     }
 
+    if (!gitExtension.isActive) {
+      await gitExtension.activate();
+    }
+
     const git = gitExtension.exports.getAPI(1);
     const repository = git.repositories[0];
 
