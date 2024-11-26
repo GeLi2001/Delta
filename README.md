@@ -40,12 +40,13 @@ Please report issues on our [GitHub repository](https://github.com/GeLi2001/Delt
 
 ## Release Notes
 
-### 0.0.8
+### 0.0.9
 
 Initial release of AI Code Reviewer:
 
 - Sidebar UI
 - Open file in editor
+- Added categories to the extension
 
 ## License
 
