@@ -37,7 +37,11 @@ export class PromptTestingProvider {
             });
 
             const openai = new OpenAIWrapper(apiKey);
-            const response = await openai.chatCompletion(data.prompt);
+            const response = await openai.chatCompletion(
+              data.prompt,
+              "gpt-4",
+              data.temperature
+            );
 
             webview.postMessage({
               type: "response",
@@ -105,6 +109,24 @@ export class PromptTestingProvider {
               font-style: italic;
               color: var(--vscode-descriptionForeground);
             }
+            .controls {
+              display: flex;
+              flex-direction: column;
+              gap: 10px;
+              margin-bottom: 10px;
+            }
+            .temperature-control {
+              display: flex;
+              align-items: center;
+              gap: 8px;
+            }
+            input[type="number"] {
+              width: 80px;
+              padding: 4px 8px;
+              background-color: var(--vscode-input-background);
+              color: var(--vscode-input-foreground);
+              border: 1px solid var(--vscode-input-border);
+            }
           </style>
         </head>
         <body>
@@ -114,18 +136,30 @@ export class PromptTestingProvider {
               placeholder="Enter your prompt here..."
               spellcheck="false"
             ></textarea>
-            <div>
+            <div class="controls">
+              <div class="temperature-control">
+                <label for="temperature">Temperature:</label>
+                <input 
+                  type="number" 
+                  id="temperature" 
+                  min="0" 
+                  max="1" 
+                  step="0.1" 
+                  value="0.3"
+                >
+              </div>
               <button onclick="testPrompt()">Test Prompt</button>
             </div>
             <div id="status" class="status"></div>
             <div id="response"></div>
           </div>
-
+  
           <script>
             const vscode = acquireVsCodeApi();
             
             function testPrompt() {
               const prompt = document.getElementById('prompt').value;
+              const temperature = parseFloat(document.getElementById('temperature').value);
               if (!prompt) return;
               
               document.getElementById('status').textContent = 'Sending prompt...';
@@ -133,10 +167,11 @@ export class PromptTestingProvider {
               
               vscode.postMessage({ 
                 type: 'testPrompt', 
-                prompt 
+                prompt,
+                temperature
               });
             }
-
+  
             window.addEventListener('message', event => {
               const message = event.data;
               
@@ -154,7 +189,7 @@ export class PromptTestingProvider {
                   break;
               }
             });
-
+  
             // Enable Ctrl+Enter to submit
             document.getElementById('prompt').addEventListener('keydown', (e) => {
               if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {

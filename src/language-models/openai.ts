@@ -7,21 +7,30 @@ export class OpenAIWrapper {
     this.openai = new OpenAI({ apiKey });
   }
 
-  async chatCompletion(prompt: string): Promise<string> {
+  async chatCompletion(
+    prompt: string,
+    model: string = "gpt-4",
+    temperature: number = 0.3
+  ): Promise<string> {
     const completion = await this.openai.chat.completions.create({
       messages: [{ role: "user", content: prompt }],
-      model: "gpt-4",
-      temperature: 0.3,
+      model: model,
+      temperature: temperature,
     });
 
     return completion.choices[0].message.content || "";
   }
 
-  async functionCall(prompt: string, tools: any[]): Promise<string> {
+  async functionCall(
+    prompt: string,
+    tools: any[],
+    model: string = "gpt-4",
+    temperature: number = 0.3
+  ): Promise<string> {
     const completion = await this.openai.chat.completions.create({
       messages: [{ role: "user", content: prompt }],
-      model: "gpt-4",
-      temperature: 0.3,
+      model: model,
+      temperature: temperature,
       tools: tools,
       tool_choice: "required",
     });

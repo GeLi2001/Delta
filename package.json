@@ -92,6 +92,11 @@
         "command": "delta.reviewCode",
         "key": "ctrl+shift+r",
         "mac": "cmd+shift+r"
+      },
+      {
+        "command": "delta.testPrompt",
+        "key": "ctrl+alt+p",
+        "mac": "cmd+alt+p"
       }
     ],
     "menus": {

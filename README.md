@@ -4,10 +4,18 @@ An Open-source AI-powered code review assistant for Visual Studio Code that prov
 
 ## Usage
 
+### Review Code Changes
+
 1. Make changes to your code
 2. Use the keyboard shortcut `Ctrl+Shift+R` (Windows/Linux) or `Cmd+Shift+R` (Mac)
 3. Or click the "Review Code Changes" button in the sidebar
 4. View the AI-generated code review in a new panel
+
+### Test Prompt
+
+1. Use the keyboard shortcut `Ctrl+Alt+P` (Windows/Linux) or `Cmd+Alt+P` (Mac)
+2. Or click the "Test Prompt" button in the sidebar
+3. View the AI-generated response in a new panel
 
 ## Extension Settings
 
@@ -40,13 +48,9 @@ Please report issues on our [GitHub repository](https://github.com/GeLi2001/Delt
 
 ## Release Notes
 
-### 0.0.9
+### 0.0.10
 
-Initial release of AI Code Reviewer:
-
-- Sidebar UI
-- Open file in editor
-- Added categories to the extension
+- Added prompt testing feature
 
 ## License
 
