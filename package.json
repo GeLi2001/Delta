@@ -79,6 +79,12 @@
         "command": "delta.setOpenAIKey",
         "title": "Set OpenAI API Key",
         "icon": "$(key)"
+      },
+      {
+        "command": "delta.testPrompt",
+        "title": "Test Prompt",
+        "category": "Delta",
+        "icon": "$(beaker)"
       }
     ],
     "keybindings": [

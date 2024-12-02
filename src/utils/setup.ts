@@ -12,6 +12,7 @@ export function setup(
 ) {
   registerCommands(context, aiReviewer, diffProvider);
   const sidebarProvider = new AISidebarProvider(context.extensionUri, context);
+
   context.subscriptions.push(
     vscode.window.registerWebviewViewProvider("deltaSettings", sidebarProvider)
   );
