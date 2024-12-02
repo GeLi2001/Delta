@@ -1,6 +1,6 @@
 # Delta
 
-An Open-source AI-powered code review assistant for Visual Studio Code that provides intelligent feedback on your code changes.
+An Open-source AI-powered code review/testing assistant for Visual Studio Code that provides intelligent feedback on your code changes and prompt testing for LLM.
 
 ## Usage
 
