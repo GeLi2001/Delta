@@ -4,16 +4,16 @@ Delta is a monorepo containing AI-powered development tools, including a VSCode 
 
 ## Project Structure
 
-delta/
-├── apps/
-│ └── vscode-extension/ # VSCode extension for code review
-├── packages/
-│ ├── ts/
-│ │ └── core/ # Shared TypeScript library
-│ └── python/
-│ └── core/ # Python utilities
-├── pnpm-workspace.yaml
-└── README.md
+- delta/
+  - apps/
+    - vscode-extension/ # VSCode extension for code review
+  - packages/
+    - ts/
+      - core/ # Shared TypeScript library
+    - python/
+      - core/ # Python utilities
+  - pnpm-workspace.yaml
+  - README.md
 
 ## Getting Started
 
