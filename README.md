@@ -1,6 +1,6 @@
 # Delta
 
-Delta is a monorepo containing AI-powered development tools, including a VSCode extension for code review and testing.
+Delta is a monorepo containing AI-powered development tools, including a VSCode extension for code review and testing framework for LLM function calls and responses.
 
 ## Project Structure
 
@@ -9,9 +9,7 @@ Delta is a monorepo containing AI-powered development tools, including a VSCode 
     - vscode-extension/ # VSCode extension for code review
   - packages/
     - ts/
-      - core/ # Shared TypeScript library
-    - python/
-      - core/ # Python utilities
+      - llm-test/ # Testing framework for LLM function calls and responses
   - pnpm-workspace.yaml
   - README.md
 
@@ -46,8 +44,7 @@ pnpm -r build
 
 ### Core Libraries
 
-- TypeScript: `packages/ts/core`
-- Python: `packages/python/core`
+- TypeScript: `packages/ts/llm-test`
 
 ## Development
 
