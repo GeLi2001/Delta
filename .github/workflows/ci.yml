@@ -14,9 +14,11 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: "16"
-      - uses: pnpm/action-setup@v2
+          cache: "pnpm"
+      - uses: pnpm/action-setup@v2.2.4 # Specify exact version
         with:
           version: 8
+          run_install: false # We'll run install after setup
       - run: pnpm install
       - working-directory: apps/vscode-extension
         run: |
