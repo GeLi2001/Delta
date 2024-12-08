@@ -14,13 +14,16 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: "16"
-          cache: "pnpm"
-      - uses: pnpm/action-setup@v2.2.4 # Specify exact version
+      - name: Install pnpm
+        run: npm install -g pnpm
+      - uses: pnpm/action-setup@v2.2.4
         with:
           version: 8
-          run_install: false # We'll run install after setup
-      - run: pnpm install
-      - working-directory: apps/vscode-extension
+          run_install: false
+      - name: Install Dependencies
+        run: pnpm install
+      - name: Build Extension
+        working-directory: apps/vscode-extension
         run: |
           pnpm install
           pnpm run lint
