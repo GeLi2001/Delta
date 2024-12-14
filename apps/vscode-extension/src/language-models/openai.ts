@@ -15,7 +15,7 @@ export class OpenAIWrapper {
     const completion = await this.openai.chat.completions.create({
       messages: [{ role: "user", content: prompt }],
       model: model,
-      temperature: temperature,
+      temperature: temperature
     });
 
     return completion.choices[0].message.content || "";
@@ -23,7 +23,7 @@ export class OpenAIWrapper {
 
   async functionCall(
     prompt: string,
-    tools: any[],
+    tools: OpenAI.Chat.Completions.ChatCompletionTool[],
     model: string = "gpt-4",
     temperature: number = 0.3
   ): Promise<string> {
@@ -32,7 +32,7 @@ export class OpenAIWrapper {
       model: model,
       temperature: temperature,
       tools: tools,
-      tool_choice: "required",
+      tool_choice: "required"
     });
     console.log(prompt);
     const toolCall =

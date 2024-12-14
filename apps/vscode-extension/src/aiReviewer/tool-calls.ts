@@ -1,5 +1,5 @@
 export const codeReviewTool = {
-  type: "function",
+  type: "function" as const,
   function: {
     name: "analyzeCode",
     description: "Analyze code changes for issues and best practices",
@@ -16,9 +16,9 @@ export const codeReviewTool = {
               line: { type: "number" },
               description: { type: "string" },
               recommendation: { type: "string" },
-              impact: { type: "string" },
-            },
-          },
+              impact: { type: "string" }
+            }
+          }
         },
         securityIssues: {
           type: "array",
@@ -28,16 +28,16 @@ export const codeReviewTool = {
               severity: { type: "string", enum: ["low", "medium", "high"] },
               description: { type: "string" },
               location: { type: "string" },
-              recommendation: { type: "string" },
-            },
-          },
+              recommendation: { type: "string" }
+            }
+          }
         },
         bestPractices: {
           type: "array",
-          items: { type: "string" },
+          items: { type: "string" }
         },
         complexity: { type: "string" },
-        impact: { type: "string" },
+        impact: { type: "string" }
       },
       required: [
         "summary",
@@ -45,8 +45,8 @@ export const codeReviewTool = {
         "securityIssues",
         "bestPractices",
         "complexity",
-        "impact",
-      ],
-    },
-  },
+        "impact"
+      ]
+    }
+  }
 };
