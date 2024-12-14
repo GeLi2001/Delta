@@ -19,7 +19,6 @@ This is a monorepo containing AI-powered development tools, including a VSCode e
 
 - Node.js 16+
 - pnpm 8+
-- Python 3.8+ (for Python packages)
 
 ### Installation
 
