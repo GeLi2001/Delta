@@ -50,7 +50,7 @@ export class DiffProvider {
       const modifiedFiles = [
         ...status.modified,
         ...status.created,
-        ...status.deleted,
+        ...status.deleted
       ];
 
       for (const file of modifiedFiles) {
@@ -101,14 +101,14 @@ export class DiffProvider {
           type: "add",
           file: filePath,
           content: line.substring(1),
-          lineNumber: ++currentLineNumber,
+          lineNumber: ++currentLineNumber
         });
       } else if (line.startsWith("-")) {
         changes.push({
           type: "delete",
           file: filePath,
           content: line.substring(1),
-          lineNumber: currentLineNumber,
+          lineNumber: currentLineNumber
         });
       } else if (line.startsWith(" ")) {
         currentLineNumber++;

@@ -1,6 +1,6 @@
 # Delta
 
-Delta is a monorepo containing AI-powered development tools, including a VSCode extension for code review and testing framework for LLM function calls and responses.
+This is a monorepo containing AI-powered development tools, including a VSCode extension for code review and testing framework for LLM function calls and responses.
 
 ## Project Structure
 
