@@ -11,7 +11,7 @@ export function registerTestPromptCommand(context: vscode.ExtensionContext) {
         vscode.ViewColumn.Two, // Opens in second editor column
         {
           enableScripts: true,
-          retainContextWhenHidden: true,
+          retainContextWhenHidden: true
         }
       );
 
