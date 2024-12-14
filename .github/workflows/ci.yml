@@ -14,15 +14,13 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: "16"
-      - uses: pnpm/action-setup@v2.2.4
+      - uses: pnpm/action-setup@v2.0.1
         with:
-          version: 8
-          run_install: false
+          version: 8.6.12
       - name: Install Dependencies
         run: pnpm install
       - name: Build Extension
         working-directory: apps/vscode-extension
         run: |
-          pnpm install
           pnpm run lint
           pnpm run compile
