@@ -18,7 +18,7 @@ jobs:
         with:
           version: 8.6.12
       - name: Install Dependencies
-        run: pnpm install
+        run: pnpm install --no-frozen-lockfile
       - name: Build Extension
         working-directory: apps/vscode-extension
         run: |
