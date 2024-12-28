@@ -32,6 +32,7 @@ pnpm -r build
 
 ## Packages
 
+
 ### VSCode Extension
 
 - Location: `apps/vscode-extension`
