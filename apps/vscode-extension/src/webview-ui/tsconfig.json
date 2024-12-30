@@ -1,0 +1,12 @@
+{
+  "extends": "../../../../tsconfig.base.json",
+  "compilerOptions": {
+    "jsx": "react-jsx", // This tells TypeScript to use the new transform
+    "jsxImportSource": "react", // This specifies which runtime to use
+    "lib": ["ES2020", "DOM"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "types": ["vscode-webview", "react", "react-dom", "node"]
+  },
+  "include": ["src/**/*"]
+}

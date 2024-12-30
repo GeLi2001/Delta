@@ -5,7 +5,7 @@ import { codeReviewTool } from "./tool-calls";
 
 export class AIReviewer {
   private openaiWrapper: OpenAIWrapper;
-
+  // this is a useless comment, should delete it in next commit
   constructor(apiKey: string) {
     this.openaiWrapper = new OpenAIWrapper(apiKey);
   }
@@ -13,7 +13,7 @@ export class AIReviewer {
   async reviewChanges(changes: Change[]): Promise<ReviewResult> {
     const prompt = this.generatePrompt(changes);
     const response = await this.openaiWrapper.functionCall(prompt, [
-      codeReviewTool
+      codeReviewTool,
     ]);
     return this.parseResponse(response);
   }

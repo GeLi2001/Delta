@@ -5,6 +5,16 @@ export class DiffProvider {
   private git: SimpleGit | null = null;
 
   static async create(context: vscode.ExtensionContext): Promise<DiffProvider> {
+    console.log("DiffProvider.create", context);
+    if (
+      !vscode.workspace.workspaceFolders ||
+      vscode.workspace.workspaceFolders.length === 0
+    ) {
+      throw new Error(
+        "No workspace folder found. Please open a folder or workspace first."
+      );
+    }
+
     const diffProvider = new DiffProvider();
     await diffProvider.initialize();
     return diffProvider;
