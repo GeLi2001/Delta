@@ -42,12 +42,7 @@
   "license": "MIT",
   "icon": "media/icon.png",
   "activationEvents": [
-    "onStartupFinished",
-    "onCommand:delta.reviewCode",
-    "onCommand:delta.testPrompt",
-    "onCommand:delta.setOpenAIKey",
-    "onView:deltaSettings",
-    "onView:deltaActions"
+    "onStartupFinished"
   ],
   "main": "./dist/extension.js",
   "contributes": {
