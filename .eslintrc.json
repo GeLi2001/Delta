@@ -12,6 +12,11 @@
     "plugin:prettier/recommended"
   ],
   "rules": {
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      { "varsIgnorePattern": "React" }
+    ],
+    "no-unused-vars": "off",
     "comma-dangle": "off",
     "prettier/prettier": [
       "warn",
@@ -24,8 +29,7 @@
       }
     ],
     "@typescript-eslint/explicit-function-return-type": "off",
-    "@typescript-eslint/no-explicit-any": "warn",
-    "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }]
+    "@typescript-eslint/no-explicit-any": "warn"
   },
   "env": {
     "node": true,
