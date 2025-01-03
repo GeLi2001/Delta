@@ -20,7 +20,6 @@ jobs:
       - name: Install Dependencies
         run: pnpm install --no-frozen-lockfile
       - name: Build Extension
-        working-directory: apps/vscode-extension
         run: |
           pnpm run lint
           pnpm run compile
