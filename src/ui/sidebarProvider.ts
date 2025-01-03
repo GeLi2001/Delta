@@ -8,15 +8,11 @@ export class AISidebarProvider implements vscode.WebviewViewProvider {
     private readonly _context: vscode.ExtensionContext
   ) {}
 
-  public resolveWebviewView(
-    webviewView: vscode.WebviewView,
-    context: vscode.WebviewViewResolveContext,
-    _token: vscode.CancellationToken
-  ) {
+  public resolveWebviewView(webviewView: vscode.WebviewView) {
     this._view = webviewView;
     webviewView.webview.options = {
       enableScripts: true,
-      localResourceRoots: [this._extensionUri],
+      localResourceRoots: [this._extensionUri]
     };
 
     webviewView.webview.html = this._getHtmlForWebview();
