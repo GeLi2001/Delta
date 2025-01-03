@@ -6,7 +6,7 @@
   "engines": {
     "vscode": "^1.94.2"
   },
-  "type": "module",
+  "type": "commonjs",
   "publisher": "GeLi",
   "categories": [
     "AI",

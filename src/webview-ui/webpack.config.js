@@ -7,7 +7,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const config = {
   target: "web",
   mode: "development", // This will be overridden by --mode flag in scripts
-  entry: path.resolve(__dirname, "src", "index.tsx"),  // Fix the entry path
+  entry: path.resolve(__dirname, "src", "index.tsx"),
   output: {
     path: path.resolve(__dirname, "..", "..", "dist", "webview"),
     filename: "webview.js"
