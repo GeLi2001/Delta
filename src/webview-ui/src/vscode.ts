@@ -1,4 +1,4 @@
-import type { WebviewApi } from "./vscode-api";
+import type { WebviewApi } from "./vscode-api.js";
 
 type MessageType = {
   type: string;

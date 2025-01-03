@@ -1,69 +1,57 @@
 # Delta
 
-This is a monorepo containing AI-powered development tools, including a VSCode extension for code review and testing framework for LLM function calls and responses.
+An Open-source AI-powered code review/testing assistant for Visual Studio Code that provides intelligent feedback on your code changes and prompt testing for LLM.
 
-## Project Structure
+## Usage
 
-- delta/
-  - apps/
-    - vscode-extension/ # VSCode extension for code review
-  - packages/
-    - ts/
-      - llm-test/ # Testing framework for LLM function calls and responses
-  - pnpm-workspace.yaml
-  - README.md
+### Review Code Changes
 
-## Getting Started
+1. Make changes to your code
+2. Use the keyboard shortcut `Ctrl+Shift+R` (Windows/Linux) or `Cmd+Shift+R` (Mac)
+3. Or click the "Review Code Changes" button in the sidebar
+4. View the AI-generated code review in a new panel
 
-### Prerequisites
+### Test Prompt
 
-- Node.js 16+
-- pnpm 8+
+1. Use the keyboard shortcut `Ctrl+Alt+P` (Windows/Linux) or `Cmd+Alt+P` (Mac)
+2. Or click the "Test Prompt" button in the sidebar
+3. View the AI-generated response in a new panel
 
-### Installation
+## Extension Settings
 
-# Install dependencies
+- `openai-api-key`: Your OpenAI API key (stored securely in your local computer)
 
-pnpm install
+## Features
 
-# Build all packages
+- 🤖 AI-powered code review
+- 🔍 Analyzes code changes in real-time
+- 🛡️ Security vulnerability detection
+- 💡 Best practices suggestions
+- 📊 Code complexity assessment
+- 🔑 Secure API key management
 
-pnpm -r build
+## Requirements
 
-## Packages
+- Visual Studio Code 1.80.0 or higher
+- Git installed and initialized in your workspace
+- OpenAI API key
 
+## Installation
 
-### VSCode Extension
+1. Install the extension from the VS Code marketplace
+2. Click on the AI Code Review icon in the sidebar
+3. Enter your OpenAI API key in the settings panel
 
-- Location: `apps/vscode-extension`
-- Features:
-  - AI-powered code review
-  - Real-time analysis
-  - Security scanning
-  - Best practices suggestions
+## Known Issues
 
-### Core Libraries
+Please report issues on our [GitHub repository](https://github.com/GeLi2001/Delta/issues).
 
-- TypeScript: `packages/ts/llm-test`
+## Release Notes
 
-## Development
+### 0.0.11
 
-# Install dependencies
-
-pnpm install
-
-# Run tests
-
-pnpm -r test
-
-# Lint
-
-pnpm -r lint
-
-## Contributing
-
-Please read [CONTRIBUTING.md](apps/vscode-extension/CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
+- Added prompt testing feature
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](apps/vscode-extension/LICENSE) file for details.
+MIT

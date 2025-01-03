@@ -3,15 +3,13 @@
 src/**
 .gitignore
 .yarnrc
-webpack.config.ts
+webpack.config.js
 vsc-extension-quickstart.md
 **/tsconfig.json
 **/.eslintrc.json
 **/*.map
 **/*.ts
-!dist/**
-node_modules/**
+test/**
 .git/**
 .github/**
 out/test/**
-test/** 

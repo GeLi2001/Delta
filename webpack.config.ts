@@ -5,15 +5,13 @@ const configs: Configuration[] = [
   // Extension Host
   {
     target: "node",
-    mode: "production",
+    mode: "development",
     entry: "./src/extension.ts",
     output: {
       path: path.resolve(__dirname, "dist"),
       filename: "extension.js",
-      libraryTarget: "commonjs2",
-      clean: true
+      libraryTarget: "commonjs2"
     },
-    devtool: "source-map",
     externals: {
       vscode: "commonjs vscode"
     },
@@ -30,18 +28,15 @@ const configs: Configuration[] = [
       ]
     }
   },
-
   // Webview
   {
     target: "web",
-    mode: "production",
+    mode: "development",
     entry: "./src/webview-ui/src/index.tsx",
     output: {
-      path: path.resolve(__dirname, "dist"),
-      filename: "webview.js",
-      clean: true
+      path: path.resolve(__dirname, "dist/webview"),
+      filename: "webview.js"
     },
-    devtool: "source-map",
     resolve: {
       extensions: [".ts", ".tsx", ".js", ".jsx"]
     },

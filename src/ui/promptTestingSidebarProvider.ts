@@ -67,7 +67,7 @@ export class PromptTestingProvider {
 
     // Get paths to local resources
     const scriptUri = webview.asWebviewUri(
-      vscode.Uri.joinPath(this._extensionUri, "dist", "webview.js")
+      vscode.Uri.joinPath(this._extensionUri, "dist", "webview", "webview.js")
     );
 
     return `
