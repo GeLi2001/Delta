@@ -1,7 +1,0 @@
-packages:
-  - "apps/*"
-  - "packages/ts/*"
-  - "apps/vscode-extension/src/webview-ui"
-  - "!**/dist/**"
-  - "!**/__tests__/**"
-  - "!**/node_modules/**"

@@ -6,6 +6,7 @@
   "engines": {
     "vscode": "^1.94.2"
   },
+  "type": "module",
   "publisher": "GeLi",
   "categories": [
     "AI",
@@ -20,8 +21,7 @@
   ],
   "scripts": {
     "vscode:prepublish": "npm run package",
-    "compile": "webpack --config webpack.config.ts && cd src/webview-ui && webpack --config webpack.config.mjs",
-    "watch": "concurrently \"webpack --watch --config webpack.config.ts\" \"cd src/webview-ui && webpack --watch --config webpack.config.ts\"",
+    "compile": "webpack --config src/webview-ui/webpack.config.js && cd src/webview-ui && webpack --config webpack.config.js",
     "package": "webpack --mode production --devtool hidden-source-map && cd src/webview-ui && webpack --mode production --devtool hidden-source-map",
     "compile-tests": "tsc -p . --outDir out",
     "watch-tests": "tsc -p . -w --outDir out",
@@ -112,9 +112,9 @@
     "diff2html": "^3.4.48",
     "openai": "^4.73.1",
     "punycode": "^2.3.1",
-    "simple-git": "^3.27.0",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "simple-git": "^3.27.0"
   },
   "devDependencies": {
     "@types/diff2html": "^0.0.5",
