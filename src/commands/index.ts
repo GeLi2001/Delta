@@ -12,7 +12,9 @@ export function registerCommands(
   diffProvider: DiffProvider
 ) {
   registerOpenFileCommand(context);
-  registerSetOpenAIKeyCommand(context, aiReviewer);
+  registerSetOpenAIKeyCommand(context, (reviewer: AIReviewer) => {
+    aiReviewer = reviewer;
+  });
   registerReviewCodeCommand(context, aiReviewer, diffProvider);
   registerTestPromptCommand(context);
 }
