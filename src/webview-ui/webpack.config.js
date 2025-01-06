@@ -1,12 +1,15 @@
+import autoprefixer from "autoprefixer";
 import path from "path";
+import tailwindcss from "tailwindcss";
 import { fileURLToPath } from "url";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 /** @type {import('webpack').Configuration} */
 const config = {
   target: "web",
-  mode: "development", // This will be overridden by --mode flag in scripts
+  mode: "development",
   entry: path.resolve(__dirname, "src", "index.tsx"),
   output: {
     path: path.resolve(__dirname, "..", "..", "dist", "webview"),
@@ -14,7 +17,8 @@ const config = {
   },
   devtool: "source-map",
   resolve: {
-    extensions: [".ts", ".tsx", ".js", ".jsx"]
+    extensions: [".ts", ".tsx", ".js", ".jsx", ".css"],
+    modules: [path.resolve(__dirname, "node_modules"), "node_modules"]
   },
   module: {
     rules: [
@@ -25,7 +29,23 @@ const config = {
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"]
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              importLoaders: 1
+            }
+          },
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: [tailwindcss, autoprefixer]
+              }
+            }
+          }
+        ]
       }
     ]
   }

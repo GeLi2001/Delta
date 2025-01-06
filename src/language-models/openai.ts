@@ -17,6 +17,7 @@ export class OpenAIWrapper {
       model: model,
       temperature: temperature
     });
+    console.log(JSON.stringify(completion, null, 2));
 
     return completion.choices[0].message.content || "";
   }

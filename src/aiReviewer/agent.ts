@@ -13,7 +13,7 @@ export class AIReviewer {
   async reviewChanges(changes: Change[]): Promise<ReviewResult> {
     const prompt = this.generatePrompt(changes);
     const response = await this.openaiWrapper.functionCall(prompt, [
-      codeReviewTool,
+      codeReviewTool
     ]);
     return this.parseResponse(response);
   }
