@@ -1,8 +1,8 @@
 import * as vscode from "vscode";
-import { PromptTestingProvider } from "../ui/promptTestingSidebarProvider";
+import { PromptTestingProvider } from "../ui-providers/promptTestingSidebarProvider";
 
 export function registerTestPromptCommand(context: vscode.ExtensionContext) {
-  return vscode.commands.registerCommand("delta.testPrompt", async () => {
+  vscode.commands.registerCommand("delta.testPrompt", async () => {
     try {
       // Create webview panel
       const panel = vscode.window.createWebviewPanel(

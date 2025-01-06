@@ -1,7 +1,7 @@
 import * as vscode from "vscode";
 import { AIReviewer } from "../aiReviewer/agent";
 import { DiffProvider } from "../contexts/diffProvider";
-import { generateReviewHTML } from "../ui/review";
+import { generateReviewHTML } from "../ui-providers/review";
 import { OPENAI_KEY_SECRET } from "../utils/constants";
 
 export function registerReviewCodeCommand(
@@ -34,7 +34,7 @@ export function registerReviewCodeCommand(
         {
           location: vscode.ProgressLocation.Notification,
           title: "Reviewing code changes...",
-          cancellable: false,
+          cancellable: false
         },
         async () => {
           return await aiReviewer!.reviewChanges(changes);
@@ -46,12 +46,12 @@ export function registerReviewCodeCommand(
         "AI Code Review",
         {
           viewColumn: vscode.ViewColumn.Beside, // Put review panel beside
-          preserveFocus: true, // Keep focus on main editor
+          preserveFocus: true // Keep focus on main editor
         },
         {
           enableCommandUris: true,
           enableScripts: true,
-          retainContextWhenHidden: true,
+          retainContextWhenHidden: true
         }
       );
 
@@ -62,7 +62,7 @@ export function registerReviewCodeCommand(
             console.log("openFile", message);
             await vscode.commands.executeCommand("delta.openFile", {
               path: message.path,
-              lineNumber: message.lineNumber,
+              lineNumber: message.lineNumber
             });
           }
         },

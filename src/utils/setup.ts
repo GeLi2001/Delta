@@ -2,7 +2,7 @@ import * as vscode from "vscode";
 import { AIReviewer } from "../aiReviewer/agent";
 import { registerCommands } from "../commands";
 import { DiffProvider } from "../contexts/diffProvider";
-import { AISidebarProvider } from "../ui/sidebarProvider";
+import { AISidebarProvider } from "../ui-providers/sidebarProvider";
 import { OPENAI_KEY_SECRET } from "./constants";
 
 export function setup(

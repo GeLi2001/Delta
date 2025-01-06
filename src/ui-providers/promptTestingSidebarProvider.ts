@@ -23,6 +23,7 @@ export class PromptTestingProvider {
 
   private _setupMessageListener(webview: vscode.Webview) {
     webview.onDidReceiveMessage(async (data) => {
+      console.log("received message", data);
       switch (data.type) {
         case "testPrompt": {
           try {
@@ -43,6 +44,37 @@ export class PromptTestingProvider {
               data.value.temperature
             );
 
+            webview.postMessage({
+              type: "response",
+              value: response
+            });
+          } catch (error) {
+            webview.postMessage({
+              type: "error",
+              value: `Error: ${error}`
+            });
+          }
+          break;
+        }
+        case "testFunction": {
+          try {
+            console.log("triggering function call");
+            const apiKey = await this._context.secrets.get(OPENAI_KEY_SECRET);
+            if (!apiKey) {
+              throw new Error("OpenAI API key not found");
+            }
+            console.log(data.value.tools);
+            webview.postMessage({
+              type: "status",
+              value: "Generating LLM response..."
+            });
+            const openai = new OpenAIWrapper(apiKey);
+            const response = await openai.functionCall(
+              data.value.prompt,
+              [data.value.tools],
+              "gpt-4",
+              data.value.temperature
+            );
             webview.postMessage({
               type: "response",
               value: response

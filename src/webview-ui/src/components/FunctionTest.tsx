@@ -8,11 +8,20 @@ export function FunctionTest() {
   const [temperature, setTemperature] = React.useState(0.3);
   const [status, setStatus] = React.useState("");
   const [response, setResponse] = React.useState("");
-  const [functionName, setFunctionName] = React.useState("");
   const [parameters, setParameters] = React.useState("");
 
   const handleTestFunction = () => {
     if (!prompt) return;
+
+    // Validate JSON parameters before sending
+    let parsedParams;
+    try {
+      parsedParams = parameters ? JSON.parse(parameters) : {};
+    } catch (e) {
+      setStatus("Error: Invalid JSON parameters");
+      return;
+    }
+
     setStatus("Sending prompt...");
     setResponse("");
 
@@ -21,8 +30,7 @@ export function FunctionTest() {
       value: {
         prompt,
         temperature,
-        functionName,
-        parameters: parameters ? JSON.parse(parameters) : {}
+        tools: parsedParams
       }
     });
   };
@@ -60,13 +68,6 @@ export function FunctionTest() {
       />
 
       <div className="mt-4 space-y-4">
-        <input
-          type="text"
-          className="w-full p-2 border border-gray-600 rounded-md bg-[#1e1e1e] text-gray-200"
-          value={functionName}
-          onChange={(e) => setFunctionName(e.target.value)}
-          placeholder="Function name"
-        />
         <textarea
           className="w-full h-24 p-2 border border-gray-600 rounded-md bg-[#1e1e1e] text-gray-200 resize-none"
           value={parameters}
