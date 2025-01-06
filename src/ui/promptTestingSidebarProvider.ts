@@ -33,8 +33,7 @@ export class PromptTestingProvider {
 
             webview.postMessage({
               type: "status",
-              value:
-                "Generating Prompt: LLM response... " + JSON.stringify(data)
+              value: "Generating LLM response..."
             });
 
             const openai = new OpenAIWrapper(apiKey);
