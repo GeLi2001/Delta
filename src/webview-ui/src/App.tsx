@@ -42,11 +42,11 @@ export function App() {
   });
 
   return (
-    <div className="min-h-screen bg-gray-100 p-4">
+    <div className="min-h-screen bg-[#1e1e1e] p-4">
       <div className="max-w-3xl mx-auto space-y-4">
-        <div className="bg-white rounded-lg shadow p-4">
+        <div className="bg-[#2d2d2d] rounded-lg shadow p-4">
           <textarea
-            className="w-full h-32 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+            className="w-full h-32 p-2 border border-gray-600 rounded-md focus:ring-2 focus:border-transparent resize-none bg-[#1e1e1e] text-gray-200"
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
             placeholder="Enter your prompt here..."
@@ -69,7 +69,7 @@ export function App() {
               <input
                 type="number"
                 id="temperature"
-                className="w-20 p-1 border border-gray-300 rounded-md"
+                className="w-20 p-1 border border-gray-600 rounded-md bg-[#1e1e1e] text-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 min={0}
                 max={1}
                 step={0.1}
@@ -94,8 +94,8 @@ export function App() {
         )}
 
         {response && (
-          <div className="bg-white rounded-lg shadow p-4">
-            <pre className="whitespace-pre-wrap text-sm text-gray-800">
+          <div className="bg-[#2d2d2d] rounded-lg shadow p-4">
+            <pre className="whitespace-pre-wrap text-sm text-gray-200">
               {response}
             </pre>
           </div>

@@ -33,14 +33,15 @@ export class PromptTestingProvider {
 
             webview.postMessage({
               type: "status",
-              value: "Generating Prompt: LLM response... " + data.prompt
+              value:
+                "Generating Prompt: LLM response... " + JSON.stringify(data)
             });
 
             const openai = new OpenAIWrapper(apiKey);
             const response = await openai.chatCompletion(
-              data.prompt,
+              data.value.prompt,
               "gpt-4",
-              data.temperature
+              data.value.temperature
             );
 
             webview.postMessage({
@@ -76,11 +77,12 @@ export class PromptTestingProvider {
         <head>
           <meta charset="UTF-8">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src ${webview.cspSource} 'unsafe-inline'; script-src ${webview.cspSource} 'unsafe-inline';">
+          <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src ${webview.cspSource} 'unsafe-inline'; script-src ${webview.cspSource};">
+          <title>Prompt Testing</title>
         </head>
         <body>
           <div id="root"></div>
-          <script src="${scriptUri}"></script>
+          <script nonce="${webview.cspSource}" src="${scriptUri}"></script>
         </body>
       </html>
     `;

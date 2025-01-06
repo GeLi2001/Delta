@@ -11,5 +11,10 @@
     "moduleResolution": "node",
     "allowJs": true
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*"],
+  "exclude": [
+    "src/webview-ui/postcss.config.js",
+    "src/webview-ui/tailwind.config.js",
+    "src/webview-ui/webpack.config.js"
+  ]
 }
