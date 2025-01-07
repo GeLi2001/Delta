@@ -14,6 +14,18 @@ An Open-source AI-powered code review/testing assistant for Visual Studio Code t
 
 - `openai-api-key`: Your OpenAI API key (stored securely in your local computer)
 
+## Screenshots
+
+|           Prompt Testing Panel            |           Function Testing Panel            |         Settings Sidebar         |
+| :---------------------------------------: | :-----------------------------------------: | :------------------------------: |
+| ![Prompt Testing](./media/panel-chat.png) | ![Function Testing](./media/panel-tool.png) | ![Settings](./media/sidebar.png) |
+
+Each panel can be accessed through:
+
+- Prompt Testing: `Ctrl+Alt+P` (Windows/Linux) or `Cmd+Alt+P` (Mac)
+- Function Testing: Switch mode in the prompt testing panel
+- Settings: Click on the Delta icon in the sidebar
+
 ### Review Code Changes
 
 1. Make changes to your code
@@ -37,18 +49,6 @@ An Open-source AI-powered code review/testing assistant for Visual Studio Code t
 - 💡 Best practices suggestions
 - 📊 Code complexity assessment
 - 🔑 Secure API key management
-
-## Screenshots
-
-|           Prompt Testing Panel            |           Function Testing Panel            |         Settings Sidebar         |
-| :---------------------------------------: | :-----------------------------------------: | :------------------------------: |
-| ![Prompt Testing](./media/panel-chat.png) | ![Function Testing](./media/panel-tool.png) | ![Settings](./media/sidebar.png) |
-
-Each panel can be accessed through:
-
-- Prompt Testing: `Ctrl+Alt+P` (Windows/Linux) or `Cmd+Alt+P` (Mac)
-- Function Testing: Switch mode in the prompt testing panel
-- Settings: Click on the Delta icon in the sidebar
 
 ## Requirements
 
