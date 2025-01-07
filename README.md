@@ -2,18 +2,6 @@
 
 An Open-source AI-powered code review/testing assistant for Visual Studio Code that provides intelligent feedback on your code changes and prompt testing for LLM.
 
-## Usage
-
-### Test Prompt
-
-1. Use the keyboard shortcut `Ctrl+Alt+P` (Windows/Linux) or `Cmd+Alt+P` (Mac)
-2. Or click the "Test Prompt" button in the sidebar
-3. View the AI-generated response in a new panel
-
-## Extension Settings
-
-- `openai-api-key`: Your OpenAI API key (stored securely in your local computer)
-
 ## Screenshots
 
 |           Prompt Testing Panel            |           Function Testing Panel            |         Settings Sidebar         |
@@ -25,6 +13,18 @@ Each panel can be accessed through:
 - Prompt Testing: `Ctrl+Alt+P` (Windows/Linux) or `Cmd+Alt+P` (Mac)
 - Function Testing: Switch mode in the prompt testing panel
 - Settings: Click on the Delta icon in the sidebar
+
+## Usage
+
+### Test Prompt
+
+1. Use the keyboard shortcut `Ctrl+Alt+P` (Windows/Linux) or `Cmd+Alt+P` (Mac)
+2. Or click the "Test Prompt" button in the sidebar
+3. View the AI-generated response in a new panel
+
+## Extension Settings
+
+- `openai-api-key`: Your OpenAI API key (stored securely in your local computer)
 
 ### Review Code Changes
 
