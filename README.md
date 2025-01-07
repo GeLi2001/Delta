@@ -40,9 +40,9 @@ An Open-source AI-powered code review/testing assistant for Visual Studio Code t
 
 ## Screenshots
 
-|         Prompt Testing Panel          |         Function Testing Panel          |         Settings Sidebar         |
-| :-----------------------------------: | :-------------------------------------: | :------------------------------: |
-| ![Prompt Testing](./media/panel1.png) | ![Function Testing](./media/panel2.png) | ![Settings](./media/sidebar.png) |
+|           Prompt Testing Panel            |           Function Testing Panel            |         Settings Sidebar         |
+| :---------------------------------------: | :-----------------------------------------: | :------------------------------: |
+| ![Prompt Testing](./media/panel-chat.png) | ![Function Testing](./media/panel-tool.png) | ![Settings](./media/sidebar.png) |
 
 Each panel can be accessed through:
 
